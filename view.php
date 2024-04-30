@@ -18,15 +18,15 @@ class View {
         ?>
         <form method="post" action="">
             <div class="mb-3">
-                <label for="username" class="form-label">Nom d'utilisateur:</label>
+                <label for="username" class="form-label">Nom du bot (1 mot) :</label>
                 <input type="text" class="form-control" id="username" name="username" value="<?php echo $_SESSION['username']; ?>">
             </div>
             <div class="mb-3">
-                <label for="message" class="form-label">Message:</label>
+                <label for="message" class="form-label">Message :</label>
                 <textarea id="message" name="message" rows="4" class="form-control"><?php echo $_SESSION['message']; ?></textarea>
             </div>
             <div class="mb-3">
-                <label for="webhook" class="form-label">Webhook URL:</label>
+                <label for="webhook" class="form-label">Webhook (URL) :</label>
                 <input type="text" id="webhook" name="webhook" class="form-control" value="<?php echo $_SESSION['webhook']; ?>">
             </div>
             <button type="submit" class="btn btn-success btn-block">Envoyer</button>
