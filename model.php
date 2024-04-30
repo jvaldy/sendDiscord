@@ -13,7 +13,14 @@ class Model {
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         
-        return $statusCode == 200;
+        // return $statusCode == 200;
+
+        if($statusCode == 204) {
+            return true;
+        } else {
+            return false;
+        }
+        
     }
 }
 ?>
