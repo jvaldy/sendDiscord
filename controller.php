@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'model.php';
 require_once 'view.php';
 
@@ -11,21 +12,22 @@ class Controller {
 
     public function handleRequest() {
         $view = new View();
-
+    
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $username = $_POST['username'];
             $message = $_POST['message'];
             $webhookURL = $_POST['webhook'];
-
-            $result = $this->model->sendMessageToDiscord($message, $webhookURL);
-
+    
+            $result = $this->model->sendMessageToDiscord($username, $message, $webhookURL);
+    
             if ($result) {
-                $view->showSuccessMessage();
+                $_SESSION['notification'] = 'Message envoyé avec succès à Discord!';
             } else {
-                $view->showErrorMessage();
+                $_SESSION['notification'] = 'Erreur lors de l\'envoi du message à Discord.';
             }
-        } else {
-            $view->showForm();
         }
+    
+        $view->showForm();
     }
 }
 ?>
